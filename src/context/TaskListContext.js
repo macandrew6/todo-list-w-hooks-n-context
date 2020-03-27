@@ -1,17 +1,22 @@
-import React, { createContext, useState, useEffect } from "react";
-import uuid from "uuid";
+import React, { createContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const TaskListContext = createContext();
 
 const TaskListContextProvider = props => {
   const [tasks, setTasks] = useState([
-    { task: "read the book", id: 1 },
-    { task: "wash the car", id: 2 },
-    { task: "write some code", id: 3 }
+    { title: "read the book", id: 1 },
+    { title: "wash the car", id: 2 },
+    { title: "write some code", id: 3 }
   ]);
 
+  //add task
+  const addTask = title => {
+    setTasks([...tasks, { title, id: uuidv4() }]);
+  };
+
   return (
-    <TaskListContext.Provider value={{ tasks }}>
+    <TaskListContext.Provider value={{ tasks, addTask }}>
       {props.children}
     </TaskListContext.Provider>
   );
