@@ -15,12 +15,20 @@ const TaskListContextProvider = props => {
     setTasks([...tasks, { title, id: uuidv4() }]);
   };
 
+  //remove task
   const removeTask = id => {
     setTasks(tasks.filter(task => task.id !== id));
   };
 
+  //clear tasks
+  const clearTasks = () => {
+    setTasks([]);
+  };
+
   return (
-    <TaskListContext.Provider value={{ tasks, addTask, removeTask }}>
+    <TaskListContext.Provider
+      value={{ tasks, addTask, removeTask, clearTasks }}
+    >
       {props.children}
     </TaskListContext.Provider>
   );
