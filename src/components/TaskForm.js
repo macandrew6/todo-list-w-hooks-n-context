@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { TaskListContext } from "../context/TaskListContext";
 
 const TaskForm = () => {
@@ -13,9 +13,21 @@ const TaskForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addTask(title);
-    setTitle("");
+    if (editItem) {
+      editTask(title, editItem.id);
+    } else {
+      addTask(title);
+      setTitle("");
+    }
   };
+
+  useEffect(() => {
+    if (editItem) {
+      setTitle(editItem.title);
+    } else {
+      setTitle("");
+    }
+  }, [editItem]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -27,7 +39,7 @@ const TaskForm = () => {
         required
       />
       <div className="form-button-container">
-        <button type="submit">Add Task</button>
+        <button type="submit">{editItem ? "Edit Task" : "Add Task"}</button>
         <button onClick={clearTasks}>Clear</button>
       </div>
     </form>
