@@ -35,12 +35,21 @@ const TaskListContextProvider = props => {
 
   //edit task
   const editTask = (title, id) => {
-    
+    const newTasks = tasks.map(task => (task.id === id ? { title, id } : task));
+    setTasks(newTasks);
   };
 
   return (
     <TaskListContext.Provider
-      value={{ tasks, addTask, removeTask, clearTasks, findTask, editItem }}
+      value={{
+        tasks,
+        editItem,
+        addTask,
+        removeTask,
+        clearTasks,
+        findTask,
+        editTask
+      }}
     >
       {props.children}
     </TaskListContext.Provider>
