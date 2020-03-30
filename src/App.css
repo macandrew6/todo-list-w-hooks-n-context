@@ -31,7 +31,50 @@ body {
   }
 }
 
+button {
+  margin-right: 5px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: bisque;
+}
+
 button i {
   font-size: 16px;
   color: grey;
+}
+
+/* taskform */
+.task-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.task-form {
+  width: 70%;
+}
+
+.task-form input {
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+  font-size: medium;
+}
+
+/* tasklist */
+.task-list-container {
+  display: flex;
+}
+.task-list {
+  width: 70%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+/* tasklist item */
+.task-list-item {
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
 }

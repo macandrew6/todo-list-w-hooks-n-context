@@ -5,9 +5,9 @@ import TaskListItem from "./TaskListItem";
 const TaskList = () => {
   const { tasks } = useContext(TaskListContext);
   return (
-    <div>
+    <div className="task-list-container">
       {tasks.length ? (
-        <ul>
+        <ul className="task-list">
           {tasks.map(task => {
             return <TaskListItem task={task} key={task.id} />;
           })}

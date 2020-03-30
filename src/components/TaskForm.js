@@ -30,19 +30,21 @@ const TaskForm = () => {
   }, [editItem]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        onChange={handleChange}
-        placeholder="...type task here"
-        value={title}
-        type="text"
-        required
-      />
-      <div className="form-button-container">
-        <button type="submit">{editItem ? "Edit Task" : "Add Task"}</button>
-        <button onClick={clearTasks}>Clear</button>
-      </div>
-    </form>
+    <div className="task-form-container">
+      <form className="task-form" onSubmit={handleSubmit}>
+        <input
+          onChange={handleChange}
+          placeholder="...type task here"
+          value={title}
+          type="text"
+          required
+        />
+        <div className="task-form-button-container">
+          <button type="submit">{editItem ? "Edit Task" : "Add Task"}</button>
+          <button onClick={clearTasks}>Clear</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
